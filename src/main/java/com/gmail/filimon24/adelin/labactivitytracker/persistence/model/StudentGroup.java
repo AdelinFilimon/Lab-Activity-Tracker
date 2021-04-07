@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Group {
+public class StudentGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Group {
     @Column(nullable = false, unique = true)
     private Long groupNumber;
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    List<Student> students;
+    @OneToMany(mappedBy = "studentGroup", fetch = FetchType.LAZY)
+    private List<Student> students;
 
 }

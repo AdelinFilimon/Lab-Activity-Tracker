@@ -32,13 +32,13 @@ public class LaboratoryClass {
     @Column(length = 64)
     private String description;
 
-    @OneToMany(mappedBy = "laboratory_class", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
     private List<Topic> topics;
 
-    @OneToMany(mappedBy = "laboratory_class", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
     private List<Assignment> assignments;
 
-    @OneToMany(mappedBy = "laboratory_class", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
     private List<Attendance> attendances;
 
 }

@@ -17,7 +17,10 @@ public class Grade {
     private Long id;
 
     @OneToOne
-    @JoinColumn(nullable = false)
+    @JoinColumns({
+            @JoinColumn(name = "student", referencedColumnName = "student_id", insertable = false, updatable = false),
+            @JoinColumn(name = "assignment", referencedColumnName = "assignment_id", insertable = false, updatable = false)
+    })
     private Submission submission;
 
     @Column

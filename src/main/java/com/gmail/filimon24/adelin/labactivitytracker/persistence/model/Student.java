@@ -34,7 +34,7 @@ public class Student {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
-    private Group group;
+    private StudentGroup studentGroup;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private List<Attendance> attendances;
