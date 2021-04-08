@@ -23,7 +23,8 @@ public class Attendance {
     @JoinColumn(nullable = false)
     private LaboratoryClass laboratoryClass;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM ('PRESENT', 'ABSENT', 'LATE')", nullable = false)
     private AttendanceType attendance;
 
 }

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum AttendanceType {
-    PRESENT("P"), ABSENT("A"), LATE("L");
+    PRESENT("PRESENT"), ABSENT("ABSENT"), LATE("LATE");
 
     private final String code;
 }
