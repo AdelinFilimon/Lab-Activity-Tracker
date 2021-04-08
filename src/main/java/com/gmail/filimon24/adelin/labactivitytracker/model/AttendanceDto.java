@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AttendanceDto {
-    private String student;
+    private StudentDto student;
     private LaboratoryClassDto laboratoryClass;
     private String attendance;
 }
