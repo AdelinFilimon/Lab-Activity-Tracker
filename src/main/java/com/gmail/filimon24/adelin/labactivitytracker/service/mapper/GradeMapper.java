@@ -3,8 +3,10 @@ package com.gmail.filimon24.adelin.labactivitytracker.service.mapper;
 import com.gmail.filimon24.adelin.labactivitytracker.model.GradeDto;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.model.Grade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class GradeMapper implements Mapper<Grade, GradeDto> {
 
     private final SubmissionMapper submissionMapper;
@@ -15,6 +17,15 @@ public class GradeMapper implements Mapper<Grade, GradeDto> {
                 .id(grade.getId())
                 .submission(submissionMapper.daoToDto(grade.getSubmission()))
                 .grade(grade.getGrade())
+                .build();
+    }
+
+    @Override
+    public Grade dtoToDao(GradeDto gradeDto) {
+        return Grade.builder()
+                .id(gradeDto.getId())
+                .submission(submissionMapper.dtoToDao(gradeDto.getSubmission()))
+                .grade(gradeDto.getGrade())
                 .build();
     }
 }

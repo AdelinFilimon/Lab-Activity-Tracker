@@ -3,8 +3,10 @@ package com.gmail.filimon24.adelin.labactivitytracker.service.mapper;
 import com.gmail.filimon24.adelin.labactivitytracker.model.TopicDto;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.model.Topic;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class TopicMapper implements Mapper<Topic, TopicDto> {
 
     private final LaboratoryClassMapper laboratoryClassMapper;
@@ -18,4 +20,12 @@ public class TopicMapper implements Mapper<Topic, TopicDto> {
                 .build();
     }
 
+    @Override
+    public Topic dtoToDao(TopicDto topicDto) {
+        return Topic.builder()
+                .id(topicDto.getId())
+                .title(topicDto.getTitle())
+                .laboratoryClass(laboratoryClassMapper.dtoToDao(topicDto.getLaboratoryClass()))
+                .build();
+    }
 }
