@@ -1,6 +1,7 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @IdClass(SubmissionId.class)
+@Builder
 public class Submission {
 
     @Column(nullable = false, length = 64)
