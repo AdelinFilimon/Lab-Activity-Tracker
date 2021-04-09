@@ -1,4 +1,4 @@
-package com.gmail.filimon24.adelin.labactivitytracker.service;
+package com.gmail.filimon24.adelin.labactivitytracker.business.service;
 
 import org.springframework.stereotype.Service;
 
