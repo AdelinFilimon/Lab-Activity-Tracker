@@ -1,4 +1,4 @@
-package com.gmail.filimon24.adelin.labactivitytracker.service.mapper;
+package com.gmail.filimon24.adelin.labactivitytracker.business.service.mapper;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
