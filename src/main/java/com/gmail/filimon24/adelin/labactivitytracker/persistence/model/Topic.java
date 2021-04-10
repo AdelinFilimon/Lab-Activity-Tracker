@@ -1,5 +1,6 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
+import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)

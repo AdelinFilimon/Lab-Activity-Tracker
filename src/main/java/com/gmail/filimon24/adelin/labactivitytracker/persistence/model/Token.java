@@ -1,5 +1,6 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
+import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,6 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 128)
+    @Column(nullable = false, length = CustomApplicationProperties.tokenFieldLen)
     private String token;
 }

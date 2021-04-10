@@ -1,5 +1,6 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
+import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,14 +22,14 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 32)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String name;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+    @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
     private DateTime deadline;
 
-    @Column(length = 64)
+    @Column(length = CustomApplicationProperties.bigFieldLen)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

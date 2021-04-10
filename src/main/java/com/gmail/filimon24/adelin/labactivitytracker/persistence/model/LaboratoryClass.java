@@ -1,5 +1,6 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
+import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,13 +26,13 @@ public class LaboratoryClass {
     private Integer labNumber;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+    @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
     private DateTime date;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String title;
 
-    @Column(length = 64)
+    @Column(length = CustomApplicationProperties.bigFieldLen)
     private String description;
 
     @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)

@@ -1,5 +1,6 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
+import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,19 +25,19 @@ public class Student implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 64)
+    @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 128)
+    @Column(nullable = false, length = CustomApplicationProperties.passwordFieldLen)
     private String password;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String firstName;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String lastName;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String hobby;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -51,7 +52,7 @@ public class Student implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("Student"));
+        return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.studentRoleIdentifier));
     }
 
     @Override
