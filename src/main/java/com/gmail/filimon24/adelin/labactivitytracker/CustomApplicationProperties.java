@@ -10,13 +10,17 @@ public final class CustomApplicationProperties {
     public final static String studentRoleIdentifier = "STUDENT";
     public final static String teacherRoleIdentifier = "TEACHER";
 
+    public final static String emailRegex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+    public final static String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+
     public final static int bigFieldLen = 64;
     public final static int smallFieldLen = 16;
     public final static int passwordFieldLen = 60; //BCryptPasswordEncoder returns 60 characters long string
     public final static int tokenFieldLen = 128;
+    public final static int groupNrLen = 5;
 
     public final static TeacherDto[] initialTeachers = {
-            TeacherDto.builder().email("teacher@yahoo.com").firstName("First Name").lastName("Last Name").password("password").build()
+            TeacherDto.builder().email("teacher@yahoo.com").firstName("First Name").lastName("Last Name").password("teacherT@123").build()
     };
 
     public final static StudentGroupDto[] initialGroups = {
