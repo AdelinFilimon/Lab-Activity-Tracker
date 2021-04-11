@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/teachers/**").hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
+                .antMatchers("/tokens/**").hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
                 .antMatchers("/students/**").hasAuthority(CustomApplicationProperties.studentRoleIdentifier)
                 .anyRequest()
                 .authenticated()
