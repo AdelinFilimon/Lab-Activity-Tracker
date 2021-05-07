@@ -2,7 +2,9 @@ package com.gmail.filimon24.adelin.labactivitytracker.business.service;
 
 import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
 import com.gmail.filimon24.adelin.labactivitytracker.business.exception.TokenNotFoundException;
-import com.gmail.filimon24.adelin.labactivitytracker.business.service.mapper.TokenMapper;
+import com.gmail.filimon24.adelin.labactivitytracker.business.mapper.StudentMapper;
+import com.gmail.filimon24.adelin.labactivitytracker.business.mapper.TokenMapper;
+import com.gmail.filimon24.adelin.labactivitytracker.model.StudentDto;
 import com.gmail.filimon24.adelin.labactivitytracker.model.TokenDto;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.TokenRepository;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.model.Token;
@@ -10,49 +12,62 @@ import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TokenService {
+public class TokenService implements BasicService<TokenDto, Long> {
 
     private final TokenRepository tokenRepository;
+    private final StudentMapper studentMapper;
     private final TokenMapper tokenMapper;
 
-    public TokenDto createToken() {
+    @Override
+    public Object create(Object student) {
+        StudentDto studentDto = (StudentDto) student;
         String generatedString = RandomString.make(CustomApplicationProperties.tokenFieldLen);
-        Token token = Token.builder().token(generatedString).build();
+        Token token = Token.builder()
+                .token(generatedString)
+                .student(studentMapper.dataAccessToEntity(studentDto))
+                .build();
         token = tokenRepository.save(token);
-        return tokenMapper.daoToDto(token);
+        return tokenMapper.entityToDataAccess(token);
     }
 
-    public List<TokenDto> getTokens() {
+    @Override
+    public List<TokenDto> getAll() {
          return tokenRepository.findAll()
                 .stream()
-                .map(tokenMapper::daoToDto)
+                .map(tokenMapper::entityToDataAccess)
                 .collect(Collectors.toList());
     }
 
-    public TokenDto getToken(Long id) {
+    @Override
+    public TokenDto get(Long id) {
         Token token =  tokenRepository.findById(id)
                         .orElseThrow(() -> new TokenNotFoundException(id));
-        return tokenMapper.daoToDto(token);
+        return tokenMapper.entityToDataAccess(token);
     }
 
-    public void deleteToken(Long id) {
+    @Override
+    public void delete(Long id) {
         if (!tokenRepository.existsById(id)) throw new TokenNotFoundException(id);
         tokenRepository.deleteById(id);
     }
 
-    @Transactional
-    public void deleteToken(String token) {
-        tokenRepository.removeTokenByToken(token);
-    }
-
-    public void deleteTokens() {
+    @Override
+    public void deleteAll() {
         tokenRepository.deleteAll();
     }
 
+    public TokenDto get(String token) {
+        Token tokenObj = tokenRepository.findTokenByToken(token);
+        if (tokenObj == null) throw new TokenNotFoundException(token);
+        return tokenMapper.entityToDataAccess(tokenObj);
+    }
+
+    public void delete(String token) {
+        tokenRepository.removeTokenByToken(token);
+    }
 }

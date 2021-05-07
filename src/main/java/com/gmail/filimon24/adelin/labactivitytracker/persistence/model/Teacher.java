@@ -24,6 +24,9 @@ public class Teacher implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen, unique = true)
+    private String username;
+
     @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen, unique = true)
     private String email;
 

@@ -41,13 +41,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/teachers/**").hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
-                .antMatchers("/tokens/**").hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
-                .antMatchers("/students/**").hasAuthority(CustomApplicationProperties.studentRoleIdentifier)
+                .antMatchers("/laboratory-classes/all", "/assignments/lab{id}", "submissions/create-submission")
+                .hasAnyAuthority(CustomApplicationProperties.studentRoleIdentifier)
+                .antMatchers("/teachers/**", "/tokens/**", "/students/**",
+                        "/laboratory-classes", "laboratory-classes/{id}", "/topics/**", "/assignments", "/assignments/{id}," +
+                                "submissions", "submissions/{id}")
+                .hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
                 .anyRequest()
                 .authenticated()
                 .and()

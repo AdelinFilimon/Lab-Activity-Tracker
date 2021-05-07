@@ -1,14 +1,14 @@
-package com.gmail.filimon24.adelin.labactivitytracker.business.service.mapper;
+package com.gmail.filimon24.adelin.labactivitytracker.business.mapper;
 
 import com.gmail.filimon24.adelin.labactivitytracker.model.LaboratoryClassDto;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.model.LaboratoryClass;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LaboratoryClassMapper implements Mapper<LaboratoryClass, LaboratoryClassDto> {
+public class LaboratoryClassMapper implements ModelMapper<LaboratoryClass, LaboratoryClassDto> {
 
     @Override
-    public LaboratoryClassDto daoToDto(LaboratoryClass laboratoryClass) {
+    public LaboratoryClassDto entityToDataAccess(LaboratoryClass laboratoryClass) {
         return LaboratoryClassDto.builder()
                 .id(laboratoryClass.getId())
                 .labNumber(laboratoryClass.getLabNumber())
@@ -19,7 +19,7 @@ public class LaboratoryClassMapper implements Mapper<LaboratoryClass, Laboratory
     }
 
     @Override
-    public LaboratoryClass dtoToDao(LaboratoryClassDto laboratoryClassDto) {
+    public LaboratoryClass dataAccessToEntity(LaboratoryClassDto laboratoryClassDto) {
         return LaboratoryClass.builder()
                 .id(laboratoryClassDto.getId())
                 .labNumber(laboratoryClassDto.getLabNumber())

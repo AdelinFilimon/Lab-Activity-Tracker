@@ -1,28 +1,21 @@
 package com.gmail.filimon24.adelin.labactivitytracker.controller.DataTransferUtil;
 
 import com.gmail.filimon24.adelin.labactivitytracker.model.StudentDto;
-import com.gmail.filimon24.adelin.labactivitytracker.model.StudentGroupDto;
 import com.gmail.filimon24.adelin.labactivitytracker.model.TokenDto;
 import lombok.Data;
 
 @Data
-public class StudentRegistration {
-    private String email;
+public class StudentRegistrationForm {
+    private String username;
     private String password;
-    private String firstName;
-    private String lastName;
     private String hobby;
-    private Long groupNumber;
     private String token;
 
     public StudentDto getStudent() {
         return StudentDto.builder()
-                .email(email)
+                .username(username)
                 .password(password)
-                .firstName(firstName)
-                .lastName(lastName)
                 .hobby(hobby)
-                .studentGroup(StudentGroupDto.builder().groupNumber(groupNumber).build())
                 .build();
     }
 

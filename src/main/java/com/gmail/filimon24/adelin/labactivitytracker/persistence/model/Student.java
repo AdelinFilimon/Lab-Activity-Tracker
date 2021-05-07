@@ -1,10 +1,7 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
 import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,10 +22,13 @@ public class Student implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = CustomApplicationProperties.smallFieldLen, unique = true)
+    private String username;
+
     @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen, unique = true)
     private String email;
 
-    @Column(nullable = false, length = CustomApplicationProperties.passwordFieldLen)
+    @Column(length = CustomApplicationProperties.passwordFieldLen)
     private String password;
 
     @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
@@ -37,7 +37,7 @@ public class Student implements UserDetails {
     @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
     private String lastName;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(length = CustomApplicationProperties.smallFieldLen)
     private String hobby;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,19 +45,20 @@ public class Student implements UserDetails {
     private StudentGroup studentGroup;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Attendance> attendances;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Submission> submissions;
+
+    @OneToOne(mappedBy = "student")
+    @ToString.Exclude
+    private Token token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.studentRoleIdentifier));
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.gmail.filimon24.adelin.labactivitytracker.business.service.mapper;
+package com.gmail.filimon24.adelin.labactivitytracker.business.mapper;
 
 import com.gmail.filimon24.adelin.labactivitytracker.model.AttendanceDto;
 import com.gmail.filimon24.adelin.labactivitytracker.persistence.model.Attendance;
@@ -8,26 +8,26 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class AttendanceMapper implements Mapper<Attendance, AttendanceDto> {
+public class AttendanceMapper implements ModelMapper<Attendance, AttendanceDto> {
 
     private final StudentMapper studentMapper;
     private final LaboratoryClassMapper laboratoryClassMapper;
 
     @Override
-    public AttendanceDto daoToDto(Attendance attendance) {
+    public AttendanceDto entityToDataAccess(Attendance attendance) {
         return AttendanceDto.builder()
-                .student(studentMapper.daoToDto(attendance.getStudent()))
+                .student(studentMapper.entityToDataAccess(attendance.getStudent()))
                 .attendance(attendance.getAttendance().getCode())
-                .laboratoryClass(laboratoryClassMapper.daoToDto(attendance.getLaboratoryClass()))
+                .laboratoryClass(laboratoryClassMapper.entityToDataAccess(attendance.getLaboratoryClass()))
                 .build();
     }
 
     @Override
-    public Attendance dtoToDao(AttendanceDto attendanceDto) {
+    public Attendance dataAccessToEntity(AttendanceDto attendanceDto) {
         return Attendance.builder()
-                .student(studentMapper.dtoToDao(attendanceDto.getStudent()))
+                .student(studentMapper.dataAccessToEntity(attendanceDto.getStudent()))
                 .attendance(AttendanceType.valueOf(attendanceDto.getAttendance()))
-                .laboratoryClass(laboratoryClassMapper.dtoToDao(attendanceDto.getLaboratoryClass()))
+                .laboratoryClass(laboratoryClassMapper.dataAccessToEntity(attendanceDto.getLaboratoryClass()))
                 .build();
     }
 }

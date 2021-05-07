@@ -32,6 +32,6 @@ public class Submission {
     @JoinColumn(nullable = false)
     private Assignment assignment;
 
-    @OneToOne(mappedBy = "submission")
-    private Grade grade;
+    @Column
+    private Integer grade;
 }

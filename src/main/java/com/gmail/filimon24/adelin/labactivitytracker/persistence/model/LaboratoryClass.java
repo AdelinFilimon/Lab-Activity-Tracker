@@ -1,10 +1,7 @@
 package com.gmail.filimon24.adelin.labactivitytracker.persistence.model;
 
 import com.gmail.filimon24.adelin.labactivitytracker.CustomApplicationProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class LaboratoryClass {
 
     @Id
@@ -29,19 +27,22 @@ public class LaboratoryClass {
     @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
     private DateTime date;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.mediumFieldLen)
     private String title;
 
     @Column(length = CustomApplicationProperties.bigFieldLen)
     private String description;
 
     @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Topic> topics;
 
     @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Assignment> assignments;
 
     @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Attendance> attendances;
 
 }

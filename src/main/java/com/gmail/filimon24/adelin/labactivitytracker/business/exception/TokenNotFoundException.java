@@ -6,4 +6,6 @@ public class TokenNotFoundException extends RuntimeException {
         super("Token with id " + id + " not found");
     }
 
+    public TokenNotFoundException(String token) {super ("Token starting with " + token.substring(0, 10) + " not found");}
+
 }

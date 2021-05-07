@@ -21,4 +21,8 @@ public class Token {
 
     @Column(nullable = false, length = CustomApplicationProperties.tokenFieldLen)
     private String token;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private Student student;
 }
