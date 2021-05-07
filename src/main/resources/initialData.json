@@ -1,0 +1,18 @@
+{
+  "teachers": [
+    {
+      "username": "teacher123T",
+      "email": "teacher@yahoo.com",
+      "password": "teacher123@T",
+      "firstName": "First Name",
+      "lastName": "Last Name"
+    }
+  ],
+
+  "studentGroups": [
+    {"studentGroup": 30431},
+    {"studentGroup": 30432},
+    {"studentGroup": 30433},
+    {"studentGroup": 30434}
+  ]
+}
