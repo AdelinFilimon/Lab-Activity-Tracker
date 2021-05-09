@@ -24,13 +24,13 @@ public class LaboratoryClass {
     private Integer labNumber;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
+    @DateTimeFormat(pattern = CustomApplicationProperties.DATE_TIME_FORMAT)
     private DateTime date;
 
-    @Column(nullable = false, length = CustomApplicationProperties.mediumFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.MEDIUM_FIELD_LEN)
     private String title;
 
-    @Column(length = CustomApplicationProperties.bigFieldLen)
+    @Column(length = CustomApplicationProperties.BIG_FIELD_LEN)
     private String description;
 
     @OneToMany(mappedBy = "laboratoryClass", fetch = FetchType.LAZY)

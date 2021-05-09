@@ -13,7 +13,7 @@ import org.joda.time.format.DateTimeFormatter;
 @Builder
 public class AssignmentForm {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.dateTimeFormat);
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.DATE_TIME_FORMAT);
     private Long id;
     private String name;
     private String deadline;

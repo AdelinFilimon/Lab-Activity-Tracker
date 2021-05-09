@@ -24,24 +24,24 @@ public class Teacher implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen, unique = true)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN, unique = true)
     private String username;
 
-    @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen, unique = true)
+    @Column(nullable = false, length = CustomApplicationProperties.BIG_FIELD_LEN, unique = true)
     private String email;
 
-    @Column(nullable = false, length = CustomApplicationProperties.passwordFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.PASSWORD_FIELD_LEN)
     private String password;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String firstName;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String lastName;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.teacherRoleIdentifier));
+        return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.TEACHER_ROLE_IDENTIFIER));
     }
 
     @Override

@@ -26,7 +26,7 @@ public class TokenService implements BasicService<TokenDto, Long> {
     @Override
     public Object create(Object student) {
         StudentDto studentDto = (StudentDto) student;
-        String generatedString = RandomString.make(CustomApplicationProperties.tokenFieldLen);
+        String generatedString = RandomString.make(CustomApplicationProperties.TOKEN_FIELD_LEN);
         Token token = Token.builder()
                 .token(generatedString)
                 .student(studentMapper.dataAccessToEntity(studentDto))

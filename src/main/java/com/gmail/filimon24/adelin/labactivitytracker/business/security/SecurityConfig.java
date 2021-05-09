@@ -47,11 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/laboratory-classes/all", "/assignments/lab{id}", "submissions/create-submission")
-                .hasAnyAuthority(CustomApplicationProperties.studentRoleIdentifier)
+                .hasAnyAuthority(CustomApplicationProperties.STUDENT_ROLE_IDENTIFIER)
                 .antMatchers("/teachers/**", "/tokens/**", "/students/**",
                         "/laboratory-classes", "laboratory-classes/{id}", "/topics/**", "/assignments", "/assignments/{id}," +
                                 "submissions", "submissions/{id}")
-                .hasAuthority(CustomApplicationProperties.teacherRoleIdentifier)
+                .hasAuthority(CustomApplicationProperties.TEACHER_ROLE_IDENTIFIER)
                 .anyRequest()
                 .authenticated()
                 .and()

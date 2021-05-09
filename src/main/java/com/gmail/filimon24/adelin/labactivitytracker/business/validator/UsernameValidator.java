@@ -16,7 +16,7 @@ public class UsernameValidator implements Validator<String> {
 
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
-    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.usernameRegex);
+    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.USERNAME_REGEX);
 
     @Override
     public Boolean isValid(String username) throws UsernameAlreadyExistsException {

@@ -15,7 +15,7 @@ public class TokenValidator implements Validator<TokenDto>{
     @Override
     public Boolean isValid(TokenDto tokenDto) {
         String token = tokenDto.getToken();
-        if (token.length() != CustomApplicationProperties.tokenFieldLen) return false;
+        if (token.length() != CustomApplicationProperties.TOKEN_FIELD_LEN) return false;
         return tokenRepository.existsTokenByToken(token);
     }
 }

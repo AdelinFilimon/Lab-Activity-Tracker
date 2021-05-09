@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 @Component
 public class PasswordValidator implements Validator<String> {
 
-    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.passwordRegex);
+    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.PASSWORD_REGEX);
 
     @Override
     public Boolean isValid(String password) {

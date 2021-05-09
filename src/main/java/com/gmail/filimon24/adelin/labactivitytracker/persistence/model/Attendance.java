@@ -27,7 +27,7 @@ public class Attendance {
     private LaboratoryClass laboratoryClass;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = CustomApplicationProperties.attendanceColumnDefinition, nullable = false)
+    @Column(columnDefinition = CustomApplicationProperties.ATTENDANCE_COLUMN_DEFINITION, nullable = false)
     private AttendanceType attendance;
 
 }

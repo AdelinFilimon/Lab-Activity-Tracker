@@ -19,7 +19,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)

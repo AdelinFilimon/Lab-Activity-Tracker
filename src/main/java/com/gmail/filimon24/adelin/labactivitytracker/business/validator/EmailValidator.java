@@ -16,7 +16,7 @@ public class EmailValidator implements Validator<String> {
 
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
-    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.emailRegex);
+    private final Pattern pattern = Pattern.compile(CustomApplicationProperties.EMAIL_REGEX);
 
     @Override
     public Boolean isValid(String email) throws EmailAlreadyExistsException {

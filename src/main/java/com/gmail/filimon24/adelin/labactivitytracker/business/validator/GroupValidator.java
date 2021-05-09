@@ -14,7 +14,7 @@ public class GroupValidator implements Validator<Long>{
     @Override
     public Boolean isValid(Long groupNumber) {
 
-        if (groupNumber.toString().length() != CustomApplicationProperties.groupNrLen)
+        if (groupNumber.toString().length() != CustomApplicationProperties.GROUP_NR_LEN)
             return false;
 
         return studentGroupRepository.existsStudentGroupByGroupNumber(groupNumber);

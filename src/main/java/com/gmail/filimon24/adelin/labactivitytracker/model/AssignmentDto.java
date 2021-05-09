@@ -16,7 +16,7 @@ public class AssignmentDto {
     private Long id;
     private String name;
 
-    @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
+    @DateTimeFormat(pattern = CustomApplicationProperties.DATE_TIME_FORMAT)
     private DateTime deadline;
 
     private String description;

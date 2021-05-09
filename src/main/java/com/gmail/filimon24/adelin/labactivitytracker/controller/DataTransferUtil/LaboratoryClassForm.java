@@ -16,7 +16,7 @@ import org.joda.time.format.DateTimeFormatter;
 @Builder
 public class LaboratoryClassForm {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.dateTimeFormat);
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.DATE_TIME_FORMAT);
 
     private Long id;
     private Integer labNumber;
@@ -25,7 +25,7 @@ public class LaboratoryClassForm {
     private String description;
 
     public LaboratoryClassDto toLaboratoryClassDto() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.dateTimeFormat);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(CustomApplicationProperties.DATE_TIME_FORMAT);
         DateTime dateTime = dateTimeFormatter.parseDateTime(date);
         return LaboratoryClassDto.builder()
                 .id(id)

@@ -16,10 +16,10 @@ import javax.persistence.*;
 @Builder
 public class Submission {
 
-    @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.BIG_FIELD_LEN)
     private String repositoryLink;
 
-    @Column(length = CustomApplicationProperties.bigFieldLen)
+    @Column(length = CustomApplicationProperties.BIG_FIELD_LEN)
     private String comment;
 
     @Id

@@ -19,7 +19,7 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = CustomApplicationProperties.tokenFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.TOKEN_FIELD_LEN)
     private String token;
 
     @OneToOne

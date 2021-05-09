@@ -26,7 +26,7 @@ public class LabActivityTrackerApplication {
 
     @Bean
     public DateTimeFormatter dateTimeFormatter() {
-        return DateTimeFormat.forPattern(CustomApplicationProperties.dateTimeFormat);
+        return DateTimeFormat.forPattern(CustomApplicationProperties.DATE_TIME_FORMAT);
     }
 
 }

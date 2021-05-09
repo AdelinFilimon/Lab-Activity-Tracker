@@ -16,7 +16,7 @@ public class LaboratoryClassDto {
     private Long id;
     private Integer labNumber;
 
-    @DateTimeFormat(pattern = CustomApplicationProperties.dateTimeFormat)
+    @DateTimeFormat(pattern = CustomApplicationProperties.DATE_TIME_FORMAT)
     private DateTime date;
 
     private String title;

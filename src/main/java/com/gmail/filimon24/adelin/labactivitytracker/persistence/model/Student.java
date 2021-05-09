@@ -22,22 +22,22 @@ public class Student implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = CustomApplicationProperties.smallFieldLen, unique = true)
+    @Column(length = CustomApplicationProperties.SMALL_FIELD_LEN, unique = true)
     private String username;
 
-    @Column(nullable = false, length = CustomApplicationProperties.bigFieldLen, unique = true)
+    @Column(nullable = false, length = CustomApplicationProperties.BIG_FIELD_LEN, unique = true)
     private String email;
 
-    @Column(length = CustomApplicationProperties.passwordFieldLen)
+    @Column(length = CustomApplicationProperties.PASSWORD_FIELD_LEN)
     private String password;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String firstName;
 
-    @Column(nullable = false, length = CustomApplicationProperties.smallFieldLen)
+    @Column(nullable = false, length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String lastName;
 
-    @Column(length = CustomApplicationProperties.smallFieldLen)
+    @Column(length = CustomApplicationProperties.SMALL_FIELD_LEN)
     private String hobby;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -58,7 +58,7 @@ public class Student implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.studentRoleIdentifier));
+        return Collections.singletonList(new SimpleGrantedAuthority(CustomApplicationProperties.STUDENT_ROLE_IDENTIFIER));
     }
 
     @Override
